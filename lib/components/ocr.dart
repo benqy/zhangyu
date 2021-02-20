@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,30 +20,32 @@ class OCR {
     print(accessToken);
   }
 
-  static Future<String> generalBasic() async {
+  static Future<List<String>> generalBasic({ImageSource source = ImageSource.gallery}) async {
+    List<String> strs = [];
     var option = Options(
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         sendTimeout: 3000,
         receiveTimeout: 6000);
     var picker = ImagePicker();
-    var file = await picker.getImage(source: ImageSource.gallery);
-    var fileData = await file.readAsBytes();
-    var base64 = base64Encode(fileData);
-    // print(base64);
-    var encodeStr = Uri.encodeComponent(base64);
-    var res = await Dio().post(API.baiduOCR, 
-      data: 'image=$encodeStr&detect_direction=true',
-      queryParameters: {
-        'access_token': accessToken
-      },
-      options: option
-    );
-    print(res);
-    var str = '';
-    res.data['words_result'].forEach((item){
-      print(item['words']);
-      str +=item['words'];
-    });
-    return str;
+    var file = await picker.getImage(source: source);
+    if(file!=null) {
+      var fileData = await file.readAsBytes();
+      var base64 = base64Encode(fileData);
+      // print(base64);
+      var encodeStr = Uri.encodeComponent(base64);
+      var res = await Dio().post(API.baiduOCR, 
+        data: 'image=$encodeStr&detect_direction=true',
+        queryParameters: {
+          'access_token': accessToken
+        },
+        options: option
+      );
+      print(res);
+      res.data['words_result'].forEach((item){
+        print(item['words']);
+        strs.add(item['words'].trim());
+      });
+    }
+    return strs;
   }
 }
