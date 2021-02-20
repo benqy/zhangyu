@@ -2,9 +2,9 @@ import 'package:lpinyin/lpinyin.dart';
 
 class Pinyin {
   
-  static String getPinyin() {
-    var str = PinyinHelper.getPinyin('毛主席',separator: '|', format:PinyinFormat.WITH_TONE_MARK);
+  static String getPinyin(str) {
+    var result = PinyinHelper.getPinyin(str,separator: '  ', format:PinyinFormat.WITH_TONE_MARK);
     print(str);
-    return str;
+    return result;
   }
 }

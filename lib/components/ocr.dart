@@ -21,7 +21,7 @@ class OCR {
     print(accessToken);
   }
 
-  static void generalBasic() async {
+  static Future<String> generalBasic() async {
     var option = Options(
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         sendTimeout: 3000,
@@ -32,7 +32,7 @@ class OCR {
     var base64 = base64Encode(fileData);
     // print(base64);
     var encodeStr = Uri.encodeComponent(base64);
-    var res = await Dio().post('https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic', 
+    var res = await Dio().post(API.baiduOCR, 
       data: 'image=$encodeStr&detect_direction=true',
       queryParameters: {
         'access_token': accessToken
@@ -40,5 +40,11 @@ class OCR {
       options: option
     );
     print(res);
+    var str = '';
+    res.data['words_result'].forEach((item){
+      print(item['words']);
+      str +=item['words'];
+    });
+    return str;
   }
 }
