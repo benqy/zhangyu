@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zhangyu/components/ocr.dart';
+import 'package:zhangyu/components/pinyin.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -14,7 +14,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: GestureDetector(
           onTap: () {
-            OCR.generalBasic();
+            // OCR.generalBasic();
+            Pinyin.getPinyin();
           },
           child: Container(
             child: Text('OCR Test'),
