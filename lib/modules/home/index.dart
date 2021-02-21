@@ -5,6 +5,7 @@ import 'package:zhangyu/components/pinyin.dart';
 import 'package:zhangyu/components/tts.dart';
 import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
+import 'package:zhangyu/widgets/nav.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -28,7 +29,8 @@ class _HomeState extends State<Home> {
               return buildItem(listContext, index);
             }
           ))
-        ])
+        ]),
+        bottomNavigationBar: NavBar(),
       ),
     );
   }
@@ -64,7 +66,6 @@ class _HomeState extends State<Home> {
       ),
       onTap: (){
         Speaker.speak(word.hanzi);
-        print(333);
       },
     );
   }
@@ -108,7 +109,7 @@ class _HomeState extends State<Home> {
           IconButton(icon: Icon(Icons.photo), onPressed: (){
             generalBasic(source: ImageSource.gallery);
           }),
-          IconButton(icon: Icon(Icons.camera), onPressed: (){
+          IconButton(icon: Icon(Icons.camera_alt ), onPressed: (){
             generalBasic(source: ImageSource.camera);
           }),
         ],),

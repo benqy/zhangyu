@@ -9,6 +9,10 @@ class OCR {
   // api key : FMOvy6HAumhIhX7mDirxf9Pb
   //secretKey: Ep4RnLqEyXqHtf8vjsfKezalWdaXmE2l
   static String accessToken = '';
+  static final option = Options(
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        sendTimeout: 3000,
+        receiveTimeout: 6000);
 
   static Future<void> initToken() async {
     var res = await Dio().post(API.baiduGetToken, queryParameters: {
@@ -22,10 +26,6 @@ class OCR {
 
   static Future<List<String>> generalBasic({ImageSource source = ImageSource.gallery}) async {
     List<String> strs = [];
-    var option = Options(
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        sendTimeout: 3000,
-        receiveTimeout: 6000);
     var picker = ImagePicker();
     var file = await picker.getImage(source: source);
     if(file!=null) {
@@ -33,7 +33,7 @@ class OCR {
       var base64 = base64Encode(fileData);
       // print(base64);
       var encodeStr = Uri.encodeComponent(base64);
-      var res = await Dio().post(API.baiduOCR, 
+      var res = await Dio().post(API.baiduOCRAdvance, 
         data: 'image=$encodeStr&detect_direction=true',
         queryParameters: {
           'access_token': accessToken
@@ -47,5 +47,30 @@ class OCR {
       });
     }
     return strs;
+  }
+
+  static Future<void> classifyPlant({ImageSource source = ImageSource.gallery}) async {
+    var image = await getEncodeImage(source);
+    var res = await Dio().post(API.baiduClassifyPlant,
+      data: 'image=$image',
+      queryParameters: {
+        'access_token': accessToken
+      },
+      options: option
+    );
+    print(res);
+  }
+
+  static Future<String> getEncodeImage(ImageSource source) async {
+    var picker = ImagePicker();
+    var file = await picker.getImage(source: source,imageQuality: 50);
+    var result = '';
+    if(file != null) {
+      var fileData = await file.readAsBytes();
+      var base64 = base64Encode(fileData);
+      // print(base64);
+      result = Uri.encodeComponent(base64);
+    }
+    return result;
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zhangyu/components/ocr.dart';
 import 'package:zhangyu/theme/theme.dart';
 
-import 'Home/Home.dart';
+import 'modules/home/index.dart';
 
 void main() {
   OCR.initToken();

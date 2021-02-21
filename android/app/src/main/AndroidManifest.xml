@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="zhangyu"
+        android:label="丈育"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
