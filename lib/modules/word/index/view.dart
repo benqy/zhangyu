@@ -7,14 +7,14 @@ import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
-class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+class WordIndexView extends StatefulWidget {
+  WordIndexView({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _WordIndexViewState createState() => _WordIndexViewState();
 }
 
-class _HomeState extends State<Home> {
+class _WordIndexViewState extends State<WordIndexView> {
   List<Sentence> sentences = [];
 
   @override

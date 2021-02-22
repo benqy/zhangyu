@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:zhangyu/modules/home/index.dart';
-import 'modules/classify/index.dart';
+import 'package:zhangyu/modules/classify/module.dart';
+import 'package:zhangyu/modules/word/module.dart';
+import 'package:zhangyu/routes.dart';
 
 class AppModule extends Module {
 
@@ -11,8 +12,8 @@ class AppModule extends Module {
   // Provide all the routes for your module
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, __) => Home()),
-    ChildRoute('/classify', child: (_, __) => ClassifyView()),
+    ModuleRoute(AppRoutes.word, module: WordModule()),
+    ModuleRoute(AppRoutes.classify, module: ClassifyModule()),
   ];
 
 }
