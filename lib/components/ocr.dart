@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:zhangyu/constants/apis.dart';
 
 class OCR {
-  //丈育
   // appid: 23678249
   // api key : FMOvy6HAumhIhX7mDirxf9Pb
   //secretKey: Ep4RnLqEyXqHtf8vjsfKezalWdaXmE2l
