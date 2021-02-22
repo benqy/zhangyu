@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:zhangyu/components/ocr.dart';
-import 'package:zhangyu/components/pinyin.dart';
+import 'package:provider/provider.dart';
 import 'package:zhangyu/components/tts.dart';
-import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
+import 'package:zhangyu/stores/sentenceStore.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
-class WordIndexView extends StatefulWidget {
+class WordIndexView extends StatelessWidget {
   WordIndexView({Key? key}) : super(key: key);
 
-  @override
-  _WordIndexViewState createState() => _WordIndexViewState();
-}
-
-class _WordIndexViewState extends State<WordIndexView> {
-  List<Sentence> sentences = [];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Column(children:[
-          head(),
+          head(context.watch<SentenceStore>()),
           Expanded(child: ListView.builder(
-            itemCount: sentences.length,
+            itemCount: context.watch<SentenceStore>().lists.length,
             itemBuilder: (BuildContext listContext, int index){
-              return buildItem(listContext, index);
+              return buildItem(listContext, index,context.watch<SentenceStore>());
             }
           ))
         ]),
@@ -35,22 +28,22 @@ class _WordIndexViewState extends State<WordIndexView> {
     );
   }
 
-  Widget buildItem(BuildContext listContext, int index){
+  Widget buildItem(BuildContext listContext, int index, SentenceStore sentenceStore){
     return Container(
       margin: EdgeInsets.fromLTRB(15,20,15,20),
       // height: 100,
       width: double.infinity,
       // color: Colors.blue,
       child: Wrap(spacing: 2, runSpacing: 10,children: [
-        for(var word in sentences[index].words) renderWord(word),
-        buildSentenceSpeakBtn(index)
+        for(var word in sentenceStore.lists[index].words) renderWord(word),
+        buildSentenceSpeakBtn(index, sentenceStore)
       ])
     );
   }
 
-  Widget buildSentenceSpeakBtn(int index) {
+  Widget buildSentenceSpeakBtn(int index, SentenceStore sentenceStore) {
     return IconButton(icon: Icon(Icons.play_arrow), onPressed: (){
-       Speaker.speak(sentences[index].value);
+       Speaker.speak(sentenceStore.lists[index].value);
     });
   }
 
@@ -70,28 +63,8 @@ class _WordIndexViewState extends State<WordIndexView> {
     );
   }
 
-  reset() {
-    sentences = [];
-  }
 
-  void generalBasic({ImageSource source = ImageSource.gallery}) async {
-    reset();
-    var strs = await OCR.generalBasic(source:source);
-    print(strs);
-    strs.forEach((str) {
-      var chars = str.split('');
-      List<Word> words = [];
-      chars.forEach((char) {
-        words.add(Pinyin.getPinyinByWord(char));
-      });
-      sentences.add(Sentence(words));
-    });
-    print(sentences);
-    // Speaker.speak(text);
-    setState(() {});
-  }
-
-  Widget head() {
+  Widget head(SentenceStore sentenceStore) {
     return Container(
       padding: EdgeInsets.all(15),
       height: 80,
@@ -107,10 +80,10 @@ class _WordIndexViewState extends State<WordIndexView> {
         ),
         child: Row(children: [
           IconButton(icon: Icon(Icons.photo), onPressed: (){
-            generalBasic(source: ImageSource.gallery);
+            sentenceStore.generalBasic(source: ImageSource.gallery);
           }),
           IconButton(icon: Icon(Icons.camera_alt ), onPressed: (){
-            generalBasic(source: ImageSource.camera);
+            sentenceStore.generalBasic(source: ImageSource.camera);
           }),
         ],),
       )
