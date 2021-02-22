@@ -6,9 +6,11 @@ enum NavBarHightlightType {
   item,
 }
 
+typedef void OnNavPress();
+
 class NavBar extends StatefulWidget{
 
-  final NavBarHightlightType hightlightType;
+  final NavBarHightlightType? hightlightType;
   final bool shadow;
   NavBar({this.hightlightType,this.shadow = true});
 
@@ -18,7 +20,7 @@ class NavBar extends StatefulWidget{
 
 class _NavBarState extends State<NavBar>{
 
-  Widget generalButton(NavBarHightlightType type, Function onPressed,{ bool isImportant = false}){
+  Widget generalButton(NavBarHightlightType type, OnNavPress onPressed,{ bool isImportant = false}){
     // var imageUrl = 'images/' + type.toString().split('.').last;
     var buttonText = '';
     var color = Colors.black;
@@ -39,8 +41,9 @@ class _NavBarState extends State<NavBar>{
         icon = Icon(Icons.camera,size:24);
         break;
       default:
+        icon = Icon(Icons.camera,size:24);
     }
-    return FlatButton(
+    return TextButton (
       child: Container(
         // color: Colors.blue,
         child: Column(
@@ -63,27 +66,24 @@ class _NavBarState extends State<NavBar>{
   }
 
   @override
-  Widget build(BuildContext context) {
-    var setting = ModalRoute.of(context).settings;
-    
-
+  Widget build(BuildContext context) { 
     return Container(
         height: 50,
         decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
           boxShadow: [
-            BoxShadow(color: Colors.grey[400],offset: Offset(1, 1),blurRadius: 15,)
+            BoxShadow(color: Constants.grayColor,offset: Offset(1, 1),blurRadius: 15,)
           ],
         ),
         child:Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             generalButton(NavBarHightlightType.home, (){
-              Navigator.pushNamed(context, '/home');
+              Navigator.pushNamed(context, '/');
             }),
             generalButton(NavBarHightlightType.item, (){
-              Navigator.pushNamed(context, '/gift');
+              Navigator.pushNamed(context, '/classify');
             }),
           ],
         )

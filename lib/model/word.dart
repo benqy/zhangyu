@@ -4,6 +4,6 @@ class Word {
   Word(this.hanzi, this.pinyin);
 
   bool get isHanzi{
-    return pinyin!= null && pinyin.isNotEmpty;
+    return pinyin.isNotEmpty;
   }
 }

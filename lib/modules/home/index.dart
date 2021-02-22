@@ -8,7 +8,7 @@ import 'package:zhangyu/model/word.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -74,9 +74,9 @@ class _HomeState extends State<Home> {
     sentences = [];
   }
 
-  void generalBasic({ImageSource source}) async {
+  void generalBasic({ImageSource source = ImageSource.gallery}) async {
     reset();
-    var strs = await OCR.generalBasic(source: source);
+    var strs = await OCR.generalBasic(source:source);
     print(strs);
     strs.forEach((str) {
       var chars = str.split('');

@@ -5,6 +5,6 @@ class Sentence {
   Sentence(this.words);
 
   String get value {
-    return this.words == null? '' : this.words.map<String>((e) => e.hanzi).join('');
+    return this.words.map<String>((e) => e.hanzi).join('');
   }
 }

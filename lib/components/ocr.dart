@@ -1,5 +1,7 @@
 import 'dart:convert';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:dio/dio.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:image_picker/image_picker.dart';
 import 'package:zhangyu/constants/apis.dart';
 
@@ -28,6 +30,7 @@ class OCR {
     List<String> strs = [];
     var picker = ImagePicker();
     var file = await picker.getImage(source: source);
+    
     if(file!=null) {
       var fileData = await file.readAsBytes();
       var base64 = base64Encode(fileData);

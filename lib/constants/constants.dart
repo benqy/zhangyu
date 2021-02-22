@@ -21,7 +21,7 @@ class Constants {
     color: Colors.white,
     shape: BoxShape.rectangle,
     boxShadow: [
-      BoxShadow(color: Colors.grey[400],offset: Offset(1, 1),blurRadius: 15,)
+      BoxShadow(color: grayColor,offset: Offset(1, 1),blurRadius: 15,)
     ],
   );
 }
