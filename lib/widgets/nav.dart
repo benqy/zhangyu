@@ -85,7 +85,7 @@ class _NavBarState extends State<NavBar>{
               Modular.to.pushNamed(AppRoutes.word);
             }),
             generalButton(NavBarHightlightType.item, (){
-              Modular.to.pushNamed(AppRoutes.classify);
+              Modular.to.pushNamed('${AppRoutes.word}/天');
             }),
           ],
         )
