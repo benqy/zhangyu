@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:zhangyu/components/tts.dart';
+import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
 import 'package:zhangyu/stores/sentenceStore.dart';
 import 'package:zhangyu/widgets/nav.dart';
@@ -12,14 +13,15 @@ class WordIndexView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var store = context.watch<SentenceStore>(); 
     return SafeArea(
       child: Scaffold(
         body: Column(children:[
-          head(context.watch<SentenceStore>()),
+          head(store),
           Expanded(child: ListView.builder(
-            itemCount: context.watch<SentenceStore>().lists.length,
+            itemCount: store.lists.length,
             itemBuilder: (BuildContext listContext, int index){
-              return buildItem(listContext, index,context.watch<SentenceStore>());
+              return buildItem(listContext,store.lists[index]);
             }
           ))
         ]),
@@ -28,22 +30,22 @@ class WordIndexView extends StatelessWidget {
     );
   }
 
-  Widget buildItem(BuildContext listContext, int index, SentenceStore sentenceStore){
+  Widget buildItem(BuildContext listContext, Sentence sentence){
     return Container(
       margin: EdgeInsets.fromLTRB(15,20,15,20),
       // height: 100,
       width: double.infinity,
       // color: Colors.blue,
       child: Wrap(spacing: 2, runSpacing: 10,children: [
-        for(var word in sentenceStore.lists[index].words) renderWord(word),
-        buildSentenceSpeakBtn(index, sentenceStore)
+        for(var word in sentence.words) renderWord(word),
+        buildSentenceSpeakBtn(sentence)
       ])
     );
   }
 
-  Widget buildSentenceSpeakBtn(int index, SentenceStore sentenceStore) {
+  Widget buildSentenceSpeakBtn(Sentence sentence) {
     return IconButton(icon: Icon(Icons.play_arrow), onPressed: (){
-       Speaker.speak(sentenceStore.lists[index].value);
+       Speaker.speak(sentence.value);
     });
   }
 

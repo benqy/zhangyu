@@ -73,5 +73,5 @@ class AppRoutes {
   ///文字详情页
   static RouteInfo wordDetail = RouteInfo('/:char/detail', parent: word);
   ///拍图识物首页
-  static String classify = '/classify';
+  static RouteInfo classify = RouteInfo('/classify');
 }
