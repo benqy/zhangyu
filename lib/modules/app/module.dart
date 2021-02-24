@@ -13,7 +13,7 @@ class AppModule extends Module {
   // Provide all the routes for your module
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute(AppRoutes.word, module: WordModule()),
+    ModuleRoute(AppRoutes.word.routeName, module: WordModule()),
     ModuleRoute(AppRoutes.classify, module: ClassifyModule()),
   ];
 

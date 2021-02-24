@@ -10,7 +10,7 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       title: Constants.appName,
       theme: appTheme,
-      initialRoute: AppRoutes.word,
+      initialRoute: AppRoutes.word.routeName,
     ).modular();
   }
 }

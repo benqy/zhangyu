@@ -82,10 +82,10 @@ class _NavBarState extends State<NavBar>{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             generalButton(NavBarHightlightType.home, (){
-              Modular.to.pushNamed(AppRoutes.word);
+              AppRoutes.word.pushNamed();
             }),
             generalButton(NavBarHightlightType.item, (){
-              Modular.to.pushNamed('${AppRoutes.word}/天');
+              AppRoutes.wordDetail.pushNamed(urlArgs: {'char': '天'});
             }),
           ],
         )

@@ -18,9 +18,11 @@ class WordModule extends Module {
         child: WordIndexView()
       )
     ),
-    ChildRoute(AppRoutes.wordDetail, child: (_, args) => ChangeNotifierProvider(
+    ChildRoute(
+      AppRoutes.wordDetail.routeName, 
+      child: (_, args) => ChangeNotifierProvider(
         create: (_) => SentenceStore(),
-        child: WordDetailView()
+        child: WordDetailView(args!.params['char'])
       )
     ),    
   ];
