@@ -4,11 +4,12 @@ import 'package:zhangyu/modules/word/detail/view.dart';
 import 'package:zhangyu/modules/word/index/view.dart';
 import 'package:zhangyu/routes.dart';
 import 'package:zhangyu/stores/sentenceStore.dart';
+import 'package:zhangyu/stores/wordStore.dart';
 
 class WordModule extends Module {
   @override
   final List<Bind> binds = [
-    // Bind.factory((i) => SentenceStore())
+    Bind.factory((i) => WordStore())
   ];
 
   @override
@@ -20,10 +21,7 @@ class WordModule extends Module {
     ),
     ChildRoute(
       AppRoutes.wordDetail.routeName, 
-      child: (_, args) => ChangeNotifierProvider(
-        create: (_) => SentenceStore(),
-        child: WordDetailView(args!.params['char'])
-      )
+      child: (_, args) => WordDetailView(args!.params['char'])
     ),    
   ];
 

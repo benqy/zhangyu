@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:zhangyu/stores/wordStore.dart';
+
+class TestView extends StatefulWidget {
+  TestView({Key? key}) : super(key: key);
+
+  @override
+  _TestViewState createState() => _TestViewState();
+}
+
+class _TestViewState extends ModularState<TestView, WordStore> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+       child: Text('ggg'),
+    );
+  }
+}

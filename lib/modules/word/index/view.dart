@@ -13,17 +13,18 @@ class WordIndexView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var store = context.watch<SentenceStore>(); 
     return SafeArea(
       child: Scaffold(
         body: Column(children:[
-          head(store),
-          Expanded(child: ListView.builder(
-            itemCount: store.lists.length,
-            itemBuilder: (BuildContext listContext, int index){
-              return buildItem(listContext,store.lists[index]);
-            }
-          ))
+          head(context.read<SentenceStore>()),
+          Consumer<SentenceStore>(builder: (_, store, child) {
+            return Expanded(child: ListView.builder(
+              itemCount: store.lists.length,
+              itemBuilder: (BuildContext listContext, int index){
+                return buildItem(listContext,store.lists[index]);
+              }
+            ));
+          })
         ]),
         bottomNavigationBar: NavBar(),
       ),
