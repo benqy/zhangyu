@@ -4,8 +4,8 @@ import 'package:zhangyu/modules/word/detail/view.dart';
 import 'package:zhangyu/modules/word/index/controller.dart';
 import 'package:zhangyu/modules/word/index/view.dart';
 import 'package:zhangyu/routes.dart';
-import 'package:zhangyu/stores/sentenceStore.dart';
-import 'package:zhangyu/stores/wordStore.dart';
+import 'package:zhangyu/stores/sentence_store.dart';
+import 'package:zhangyu/stores/word_store.dart';
 
 class WordModule extends Module {
   @override
