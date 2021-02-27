@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ConsumerWidget<T extends ChangeNotifier> extends StatelessWidget {
+
   final Widget Function(BuildContext context, T value, Widget? child) builder;
   final T store;
   final Widget? child;
