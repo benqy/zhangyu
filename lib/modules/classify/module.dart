@@ -1,14 +1,15 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'index/view.dart';
 
-class ClassifyModule extends Module {
+class ClassifyModule extends ChildModule {
+
   @override
-  final List<Bind> binds = [
+  List<Bind> get binds  => [
   ];
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ClassifyIndexView()),
+  List<ModularRouter> get routers => [
+    ModularRouter('/', child: (_, args) => ClassifyIndexView()),
   ];
 
 }

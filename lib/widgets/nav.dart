@@ -10,7 +10,7 @@ enum NavBarHightlightType {
 typedef void OnNavPress();
 
 class NavBar extends StatefulWidget {
-  final NavBarHightlightType? hightlightType;
+  final NavBarHightlightType hightlightType;
   final bool shadow;
   NavBar({this.hightlightType, this.shadow = true});
 

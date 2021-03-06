@@ -3,12 +3,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class RouteInfo {
   RouteInfo(this.routeName, {this.parent});
-  final RouteInfo? parent;
+  final RouteInfo parent;
   final String routeName;
   
   String get fullRouteName{
     if(parent != null){
-      return parent!.routeName + routeName;
+      return parent.routeName + routeName;
     } else {
       return routeName;
     }
@@ -27,7 +27,7 @@ class RouteInfo {
   String generalLink(Map<String,dynamic> args){
     var url = '';
     if(parent != null) {
-      url += parent!.generalLink(args);
+      url += parent.generalLink(args);
     }
     print(url);
     if (routeName.contains('/:')) {
@@ -60,10 +60,10 @@ class RouteInfo {
     return url;
   }
 
-  void pushNamed({Map<String,dynamic> urlArgs = const {}, Object? data, bool forRoot = false}) {
+  void pushNamed({Map<String,dynamic> urlArgs = const {}, Object data, bool forRoot = false}) {
     var realLink = generalLink(urlArgs);
     print(realLink);
-    Modular.to.pushNamed(realLink, arguments:data, forRoot: forRoot);
+    Modular.to.pushNamed(realLink, arguments:data);
   }
 }
 

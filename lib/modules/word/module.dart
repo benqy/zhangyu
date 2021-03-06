@@ -7,20 +7,20 @@ import 'package:zhangyu/routes.dart';
 import 'package:zhangyu/stores/sentence_store.dart';
 import 'package:zhangyu/stores/word_store.dart';
 
-class WordModule extends Module {
+class WordModule extends ChildModule {
   @override
-  final List<Bind> binds = [Bind.factory((i) => WordStore())];
+  List<Bind> get binds => [Bind((i) => WordStore())];
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute('/',
+  final List<ModularRouter> routers = [
+    ModularRouter('/',
         child: (_, args) => MultiProvider(providers: [
               ChangeNotifierProvider<SentenceStore>(
                   create: (_) => SentenceStore()),
               ChangeNotifierProvider<WordController>(
                   create: (_) => WordController()),
             ], child: WordIndexView())),
-    ChildRoute(AppRoutes.wordDetail.routeName,
-        child: (_, args) => WordDetailView(args!.params['char'])),
+    ModularRouter(AppRoutes.wordDetail.routeName,
+        child: (_, args) => WordDetailView(args.params['char'])),
   ];
 }

@@ -4,7 +4,7 @@ import 'package:zhangyu/stores/word_store.dart';
 
 class WordDetailView extends StatefulWidget {
   final String char;
-  const WordDetailView(this.char, {Key? key}) : super(key: key);
+  const WordDetailView(this.char, {Key key}) : super(key: key);
 
   @override
   _WordDetailViewState createState() => _WordDetailViewState();
@@ -19,11 +19,11 @@ class _WordDetailViewState extends ModularState<WordDetailView, WordStore> {
       child: Column(
         children: [
           Container(child: Text(temp)),
-          Container(child: Text(store.word)),
+          Container(child: Text(controller.word)),
           GestureDetector(
             child: Container(height: 100,color: Colors.blue,width:double.infinity),
             onTap: (){
-              store.setWord(Uri.decodeComponent(widget.char));
+              controller.setWord(Uri.decodeComponent(widget.char));
             },
           )
         ],

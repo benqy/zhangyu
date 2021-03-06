@@ -9,7 +9,7 @@ import 'package:zhangyu/stores/sentence_store.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
 class WordIndexView extends StatelessWidget {
-  WordIndexView({Key? key}) : super(key: key);
+  WordIndexView({Key key}) : super(key: key);
 
 
   @override

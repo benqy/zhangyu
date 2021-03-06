@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:zhangyu/stores/word_store.dart';
 
 class TestView extends StatefulWidget {
-  TestView({Key? key}) : super(key: key);
+  TestView({Key key}) : super(key: key);
 
   @override
   _TestViewState createState() => _TestViewState();

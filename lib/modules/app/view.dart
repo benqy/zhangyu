@@ -11,6 +11,8 @@ class AppView extends StatelessWidget {
       title: Constants.appName,
       theme: appTheme,
       initialRoute: AppRoutes.word.routeName,
-    ).modular();
+      navigatorKey: Modular.navigatorKey,
+      onGenerateRoute: Modular.generateRoute,
+    );
   }
 }
