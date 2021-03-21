@@ -5,9 +5,9 @@
 // **************************************************************************
 
 import 'package:zhangyu/core/route_info.dart';
-import 'package:zhangyu/modules/word/module.dart' as _word;
+import 'package:zhangyu/modules/app/module.dart' as _home;
 
 class AppRoutes {
-  /// 文字
-  static RouteInfo word = _word.word;
+  /// 首页
+  static RouteInfo home = _home.home;
 }
