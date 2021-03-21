@@ -1,0 +1,7 @@
+builders:
+  routeBuilder:
+    import: "package:zhangyu/gen/route_builder.dart"
+    builder_factories: ["routeBuilder"]
+    build_extensions: {".dart": [".g.part"]}
+    auto_apply: root_package
+    build_to: source
