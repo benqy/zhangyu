@@ -1,6 +1,5 @@
 import 'package:zhangyu/core/module.dart';
 import 'package:zhangyu/core/route_info.dart';
-import 'package:zhangyu/annotations/route_meta.dart';
 import 'package:zhangyu/modules/word/module.dart';
 
 

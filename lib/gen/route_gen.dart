@@ -1,6 +1,7 @@
 import 'package:source_gen/source_gen.dart';
 import 'package:zhangyu/annotations/route_meta.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:glob/glob.dart';
 
 //flutter packages pub run build_runner build --delete-conflicting-outputs
 class RouteGenerator extends GeneratorForAnnotation<RouteMeta> {
@@ -35,9 +36,12 @@ _$name.$name,
   }
 }
 
-class RouteWriteGenerator extends GeneratorForAnnotation<RootRouteMeta> {
+class RouteWriteGenerator extends GeneratorForAnnotation<RootRouteMeta>  {
   @override
-  dynamic generateForAnnotatedElement(Element element, _, __) {
+  dynamic generateForAnnotatedElement(Element element, _, __) async {
+    // __.findAssets(glob)
+    // var dir = await  __.findAssets(Glob('**/*.route1.dart')).first;
+    // __.writeAsString(dir, '3234234');
     return '''
 ${RouteGenerator.codeImports}
 
