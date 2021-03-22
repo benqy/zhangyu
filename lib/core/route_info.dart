@@ -1,10 +1,21 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class RouteInfo {
-  RouteInfo(this.routeName, {this.parent});
+typedef S ItemCreator<S>();
+
+class RouteInfo<T extends Widget> {
+  RouteInfo(this.routeName, {this.parent, this.page, this.creator }) {
+    if(page == null && this.creator != null) {
+      page = GetPage(name: fullRouteName, page: () => creator!());
+    }
+  }
+  
   final RouteInfo? parent;
   final String routeName;
+  late final GetPage? page;
+  final ItemCreator<T>? creator;
   
+
   String get fullRouteName{
     if(parent != null){
       return parent!.routeName + routeName;

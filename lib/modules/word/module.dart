@@ -26,10 +26,11 @@
 // }
 import 'package:zhangyu/core/route_info.dart';
 import 'package:zhangyu/annotations/route_meta.dart';
+import 'package:zhangyu/modules/word/index/view.dart';
 
 @RouteMeta('文字')
 @RootRouteMeta()
-RouteInfo word = RouteInfo('/word');
+RouteInfo word = RouteInfo<WordIndexView>('/word');
 
 @RouteMeta('文字详情页')
 RouteInfo wordDetail = RouteInfo('/:char/detail', parent: word);
