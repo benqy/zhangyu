@@ -19,6 +19,8 @@ class AppRoutes {
   /// 文字详情页
   static RouteInfo wordDetail = _wordDetail.wordDetail;
 
+  static RouteInfo root = _word.word;
+
   static List<RouteInfo> routes = [
     _classify.classify,
     _word.word,

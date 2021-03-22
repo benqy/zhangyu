@@ -1,0 +1,26 @@
+{
+  "name": "zhangyu",
+  "version": "1.0.0",
+  "description": "给孩子他妈扫盲用.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "buildroute": "node bin/build_route.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benqy/zhangyu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benqy/zhangyu/issues"
+  },
+  "homepage": "https://github.com/benqy/zhangyu#readme",
+  "dependencies": {
+    "fs-extra": "^9.1.0"
+  }
+}
