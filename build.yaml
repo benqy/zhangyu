@@ -2,6 +2,14 @@ builders:
   routeBuilder:
     import: "package:zhangyu/gen/route_builder.dart"
     builder_factories: ["routeBuilder"]
-    build_extensions: {".dart": [".g.part"]}
+    build_extensions: {".dart": [".route.dart"]}
+    auto_apply: root_package
+    build_to: source
+    runs_before: ['routeWriteBuilder']
+    # applies_builders: ["source_gen|combining_builder"]
+  routeWriteBuilder:
+    import: "package:zhangyu/gen/route_builder.dart"
+    builder_factories: ["routeWriteBuilder"]
+    build_extensions: {".dart": [".rootroute.dart"]}
     auto_apply: root_package
     build_to: source

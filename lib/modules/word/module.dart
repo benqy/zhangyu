@@ -25,7 +25,11 @@
 //   ];
 // }
 import 'package:zhangyu/core/route_info.dart';
-import 'package:zhangyu/core/route_meta.dart';
+import 'package:zhangyu/annotations/route_meta.dart';
 
-@RouteMeta('word', '文字')
+@RouteMeta('文字')
+@RootRouteMeta()
 RouteInfo word = RouteInfo('/word');
+
+@RouteMeta('文字详情页')
+RouteInfo wordDetail = RouteInfo('/:char/detail', parent: word);

@@ -1,13 +1,5 @@
-import 'index/view.dart';
+import 'package:zhangyu/core/route_info.dart';
+import 'package:zhangyu/annotations/route_meta.dart';
 
-// class ClassifyModule extends Module {
-//   @override
-//   final List<Bind> binds = [
-//   ];
-
-//   @override
-//   final List<ModularRoute> routes = [
-//     ChildRoute('/', child: (_, args) => ClassifyIndexView()),
-//   ];
-
-// }
+@RouteMeta('拍图识物首页')
+RouteInfo classify = RouteInfo('/classify');
