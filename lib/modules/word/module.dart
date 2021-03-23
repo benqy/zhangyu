@@ -29,10 +29,12 @@ import 'package:zhangyu/annotations/route_meta.dart';
 import 'package:zhangyu/modules/word/detail/view.dart';
 import 'package:zhangyu/modules/word/index/view.dart';
 
-@RouteMeta('文字')
+///文字首页
+@RouteMeta()
 @RootRouteMeta()
 RouteInfo word = RouteInfo('/word', page: () => WordIndexView());
 
-@RouteMeta('文字详情页')
+///文字详情页
+@RouteMeta()
 RouteInfo wordDetail =
     RouteInfo('/:char/detail', parent: word, page: () => WordDetailView());

@@ -11,13 +11,13 @@ import 'package:zhangyu/modules/word/module.dart' as _wordDetail;
 import 'package:zhangyu/modules/classify/module.dart' as _classify;
 
 class AppRoutes {
-  /// 文字
+  ///文字首页
   static RouteInfo word = _word.word;
 
-  /// 文字详情页
+  ///文字详情页
   static RouteInfo wordDetail = _wordDetail.wordDetail;
 
-  /// 拍图识物首页
+  ///拍图识物首页
   static RouteInfo classify = _classify.classify;
 
   static RouteInfo root = _word.word;

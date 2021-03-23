@@ -2,7 +2,7 @@ import 'package:source_gen/source_gen.dart';
 import 'package:zhangyu/annotations/route_meta.dart';
 import 'package:analyzer/dart/element/element.dart';
 
-//flutter packages pub run build_runner build --delete-conflicting-outputs
+//flutter pub run build_runner build --delete-conflicting-outputs
 class RouteGenerator extends GeneratorForAnnotation<RouteMeta> {
 
   static String codeImports = '''
@@ -14,9 +14,9 @@ import 'package:get/get.dart';
 
   @override
   dynamic generateForAnnotatedElement(Element element, _, __) {
-    // print("当前输入源： ${__.inputId.toString()}  被拦截到的元素： ${element.name} 注解值：}");
+    // print("被拦截到的元素： ${element.documentationComment} 注解值：${e}");
     var name = element.name;
-    var text = _.read('text').stringValue;
+    var text = element.documentationComment;
     var path = __.inputId.uri;
     // var lib = await __.inputLibrary;
     // print(lib.exportNamespace); 
@@ -25,7 +25,7 @@ import '$path' as _$name;
 ''';
 
     codeMembers += '''
-  /// $text
+  $text
   static RouteInfo $name = _$name.$name;
 ''';
     

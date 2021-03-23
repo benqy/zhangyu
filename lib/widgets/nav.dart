@@ -84,7 +84,7 @@ class _NavBarState extends State<NavBar> {
               AppRoutes.word.pushNamed();
             }),
             generalButton(NavBarHightlightType.item, () {
-              AppRoutes.wordDetail.pushNamed(urlArgs: {'char': '天'});
+              AppRoutes.classify.pushNamed();
             }),
           ],
         ));

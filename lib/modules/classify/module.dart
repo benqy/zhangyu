@@ -3,5 +3,6 @@ import 'package:zhangyu/annotations/route_meta.dart';
 
 import 'index/view.dart';
 
-@RouteMeta('拍图识物首页')
+///拍图识物首页
+@RouteMeta()
 RouteInfo classify = RouteInfo('/classify',page: () => ClassifyIndexView());
