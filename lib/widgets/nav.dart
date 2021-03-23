@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zhangyu/constants/constants.dart';
 import 'package:zhangyu/routes.dart';
+import 'package:zhangyu/constants/constants.dart';
 
 enum NavBarHightlightType {
   home,

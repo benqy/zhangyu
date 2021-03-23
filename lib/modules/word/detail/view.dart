@@ -1,33 +1,30 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_modular/flutter_modular.dart';
-// import 'package:zhangyu/stores/word_store.dart';
+import 'package:flutter/material.dart';
 
-// class WordDetailView extends StatefulWidget {
-//   final String char;
-//   const WordDetailView(this.char, {Key? key}) : super(key: key);
+class WordDetailView extends StatefulWidget {
+  const WordDetailView({Key? key}) : super(key: key);
 
-//   @override
-//   _WordDetailViewState createState() => _WordDetailViewState();
-// }
+  @override
+  _WordDetailViewState createState() => _WordDetailViewState();
+}
 
-// class _WordDetailViewState extends ModularState<WordDetailView, WordStore> {
-//   String temp = 'aa';
+class _WordDetailViewState extends State<WordDetailView> {
+  String temp = 'aa';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: Column(
-//         children: [
-//           Container(child: Text(temp)),
-//           Container(child: Text(store.word)),
-//           GestureDetector(
-//             child: Container(height: 100,color: Colors.blue,width:double.infinity),
-//             onTap: (){
-//               store.setWord(Uri.decodeComponent(widget.char));
-//             },
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Container(child: Text(temp)),
+          Container(child: Text('333333')),
+          GestureDetector(
+            child: Container(height: 100,color: Colors.blue,width:double.infinity),
+            onTap: (){
+              print('33434');
+            },
+          )
+        ],
+      ),
+    );
+  }
+}

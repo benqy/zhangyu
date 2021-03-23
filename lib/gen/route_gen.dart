@@ -7,9 +7,10 @@ class RouteGenerator extends GeneratorForAnnotation<RouteMeta> {
 
   static String codeImports = '''
 import 'package:zhangyu/core/route_info.dart';
+import 'package:get/get.dart';
 ''';
   static String codeMembers = '';
-  static String codeRouteList = '';
+  static String pageList = '';
 
   @override
   dynamic generateForAnnotatedElement(Element element, _, __) {
@@ -28,8 +29,8 @@ import '$path' as _$name;
   static RouteInfo $name = _$name.$name;
 ''';
     
-    codeRouteList  += '''
-_$name.$name,
+    pageList  += '''
+$name.getPage,
 ''';
     return null;
   }
@@ -51,8 +52,8 @@ class AppRoutes {
 
   static RouteInfo root = _$name.$name;
 
-  static List<RouteInfo> routes = [
-    ${RouteGenerator.codeRouteList}
+  static List<GetPage> pages = [
+    ${RouteGenerator.pageList}
   ];
 }
 ''';

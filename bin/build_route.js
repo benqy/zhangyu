@@ -34,7 +34,7 @@ exec(cmd, (error, stdout, stderr) => {
   console.log(stdout)
   fromDir('./lib',/\.rootroute.dart$/,function(filename){
       if(filename) {
-        fse.moveSync(filename, './lib/app_routes.dart', { overwrite: true })
+        fse.moveSync(filename, './lib/routes.dart', { overwrite: true })
       }
   });
 })
