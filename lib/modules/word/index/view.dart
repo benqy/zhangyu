@@ -17,13 +17,13 @@ class WordIndexView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Column(children:[
-          head(c.store),
-          // Expanded(child: ListView.builder(
-          //     itemCount: store.lists.length,
-          //     itemBuilder: (BuildContext listContext, int index){
-          //       return buildItem(listContext,store.lists[index]);
-          //     }
-          //   ))
+          head(),
+          Expanded(child: ListView.builder(
+            itemCount: c.store.lists.length,
+            itemBuilder: (BuildContext listContext, int index){
+              return buildItem(listContext, c.store.lists[index]);
+            }
+          ))
         ]),
         bottomNavigationBar: NavBar(),
       ),
@@ -35,7 +35,7 @@ class WordIndexView extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(15,20,15,20),
       height: 100,
       width: double.infinity,
-      color: Colors.blue,
+      // color: Colors.blue,
       child: Wrap(spacing: 2, runSpacing: 10,children: [
         for(var word in sentence.words) _Word(word: word),
         _SpeakButton(sentence: sentence)
@@ -44,7 +44,7 @@ class WordIndexView extends StatelessWidget {
   }
 
 
-  Widget head(SentenceStore sentenceStore) {
+  Widget head() {
     return Container(
       padding: EdgeInsets.all(15),
       height: 80,
@@ -60,10 +60,10 @@ class WordIndexView extends StatelessWidget {
         ),
         child: Row(children: [
           IconButton(icon: Icon(Icons.photo), onPressed: (){
-            sentenceStore.generalBasic(source: ImageSource.gallery);
+            c.wordFromGallery();
           }),
           IconButton(icon: Icon(Icons.camera_alt ), onPressed: (){
-            sentenceStore.generalBasic(source: ImageSource.camera);
+            c.wordFromCamera();
           }),
         ],),
       )
