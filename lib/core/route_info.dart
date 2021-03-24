@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 typedef S ItemCreator<S>();
 
 class RouteInfo {
-  RouteInfo(this.routeName, {this.parent, required GetPageBuilder page }) {
+  RouteInfo(this.routeName, {this.parent, required GetPageBuilder page}) {
     getPage = GetPage(name: fullRouteName, page: page);
   }
 
@@ -64,11 +64,8 @@ class RouteInfo {
   }
 
   void pushNamed(
-      {Map<String, dynamic> urlArgs = const {},
-      Object? args,
-      bool forRoot = false}) {
-    var realLink = generalLink(urlArgs);
-    print(realLink);
-    Get.toNamed(realLink, arguments: args);
+      {Map<String, dynamic> args = const {}, Object data = const {}}) {
+    var realLink = generalLink(args);
+    Get.toNamed(realLink, arguments: data);
   }
 }

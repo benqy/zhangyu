@@ -33,7 +33,7 @@ class WordIndexView extends StatelessWidget {
   Widget buildItem(BuildContext listContext, Sentence sentence){
     return Container(
       margin: EdgeInsets.fromLTRB(15,20,15,20),
-      height: 100,
+      // height: 100,
       width: double.infinity,
       // color: Colors.blue,
       child: Wrap(spacing: 2, runSpacing: 10,children: [

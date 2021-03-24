@@ -37,4 +37,4 @@ RouteInfo word = RouteInfo('/word', page: () => WordIndexView());
 ///文字详情页
 @RouteMeta()
 RouteInfo wordDetail =
-    RouteInfo('/:char/detail', parent: word, page: () => WordDetailView());
+    RouteInfo('/detail', parent: word, page: () => WordDetailView());
