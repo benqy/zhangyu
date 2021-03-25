@@ -6,9 +6,20 @@ class WordController extends GetxController {
   WordController(){
     print('init word controller');
   }
-  SentenceStore store = SentenceStore();
+  var store = (SentenceStore()).obs;
+  var count = 0.obs;
   
-  wordFromGallery() => store.generalBasic(source: ImageSource.gallery);
+  wordFromGallery() async {
+    await store.value!.generalBasic(source: ImageSource.gallery);
+    store.refresh();
+  }
 
-  wordFromCamera() => store.generalBasic(source: ImageSource.camera);
+  wordFromCamera() async {
+    await store.value!.generalBasic(source: ImageSource.gallery);
+    store.refresh();
+  }
+
+  add(){
+    ++count;
+  }
 }

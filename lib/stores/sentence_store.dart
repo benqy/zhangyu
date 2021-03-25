@@ -12,7 +12,7 @@ class SentenceStore with ChangeNotifier{
     lists = [];
   }
 
-  void generalBasic({ImageSource source = ImageSource.gallery}) async {
+  Future<void> generalBasic({ImageSource source = ImageSource.gallery}) async {
     var strs = await OCR.generalBasic(source:source);
     print(strs);
     strs.forEach((str) {

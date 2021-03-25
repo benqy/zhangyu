@@ -22,13 +22,14 @@ class WordDetailView extends StatelessWidget {
             ),
             ValueBuilder<bool>(
               initialValue: false,
-              builder: (bool? value, updateFn) =>
-                  Container(child: Switch(value: false, onChanged: (bool _value){
-                    updateFn(_value);
-                  })),
+              builder: (bool value, updateFn) =>
+                  Container(child: Switch(value: value, onChanged: updateFn)),
               onUpdate: (value) => print(value),
               onDispose: () => print('dispose'),
-            )
+            ),
+            ObxValue<RxBool>(
+                (data) => Switch(value: data.value!, onChanged: data),
+                false.obs)
           ],
         ),
         bottomNavigationBar: NavBar(),
