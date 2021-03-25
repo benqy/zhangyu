@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 typedef S ItemCreator<S>();
 
 class RouteInfo {
-  RouteInfo(this.routeName, {this.parent, required GetPageBuilder page}) {
-    getPage = GetPage(name: fullRouteName, page: page);
+  RouteInfo(this.routeName,
+      {this.parent, required GetPageBuilder page, Bindings? binding}) {
+    getPage = GetPage(name: fullRouteName, page: page, binding: binding);
   }
 
   final RouteInfo? parent;

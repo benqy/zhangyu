@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:zhangyu/components/tts.dart';
 import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
 import 'package:zhangyu/modules/word/index/controller.dart';
-import 'package:zhangyu/stores/sentence_store.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
 class WordIndexView extends StatelessWidget {
