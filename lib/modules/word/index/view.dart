@@ -4,12 +4,12 @@ import 'package:zhangyu/components/tts.dart';
 import 'package:zhangyu/model/sentence.dart';
 import 'package:zhangyu/model/word.dart';
 import 'package:zhangyu/modules/word/index/controller.dart';
-import 'package:zhangyu/stores/sentence_store.dart';
 import 'package:zhangyu/widgets/nav.dart';
 
-class WordIndexView extends StatelessWidget {
-  WordIndexView({Key? key}) : super(key: key);
-  final WordController c = Get.put(WordController())!;
+class WordIndexView extends GetView<WordController> {
+  WordIndexView() {
+    Get.put(WordController());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,10 @@ class WordIndexView extends StatelessWidget {
           head(),
           Obx(() => Expanded(
               child: ListView.builder(
-                  itemCount: c.store.value!.lists.length,
+                  itemCount: controller.store.value!.lists.length,
                   itemBuilder: (BuildContext listContext, int index) {
-                    return buildItem(listContext, c.store.value!.lists[index]);
+                    return buildItem(
+                        listContext, controller.store.value!.lists[index]);
                   })))
         ]),
         bottomNavigationBar: NavBar(),
@@ -60,15 +61,15 @@ class WordIndexView extends StatelessWidget {
               IconButton(
                   icon: Icon(Icons.photo),
                   onPressed: () {
-                    c.add();
-                    c.wordFromGallery();
+                    controller.add();
+                    controller.wordFromGallery();
                   }),
               IconButton(
                   icon: Icon(Icons.camera_alt),
                   onPressed: () {
-                    c.wordFromCamera();
+                    controller.wordFromCamera();
                   }),
-              Obx(()=>Text(c.count.toString()))
+              Obx(() => Text(controller.count.toString()))
             ],
           ),
         ));

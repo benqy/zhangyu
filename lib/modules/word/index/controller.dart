@@ -10,11 +10,13 @@ class WordController extends GetxController {
   var count = 0.obs;
   
   wordFromGallery() async {
+    store.value!.reset();
     await store.value!.generalBasic(source: ImageSource.gallery);
     store.refresh();
   }
 
   wordFromCamera() async {
+    store.value!.reset();
     await store.value!.generalBasic(source: ImageSource.gallery);
     store.refresh();
   }

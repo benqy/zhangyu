@@ -14,7 +14,6 @@ class SentenceStore with ChangeNotifier{
 
   Future<void> generalBasic({ImageSource source = ImageSource.gallery}) async {
     var strs = await OCR.generalBasic(source:source);
-    print(strs);
     strs.forEach((str) {
       var chars = str.split('');
       List<Word> words = [];
@@ -23,7 +22,6 @@ class SentenceStore with ChangeNotifier{
       });
       lists.add(Sentence(words));
     });
-    print(lists);
     notifyListeners();
   }
   
